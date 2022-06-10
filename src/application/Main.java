@@ -4,19 +4,24 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.ScrollPane;
+import javafx.stage.Stage;
 
 public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
-			Parent parent = loader.load();
-			Scene mainScene = new Scene(parent);
+			FXMLLoader loader = new FXMLLoader(getClass()
+			.getResource("/gui/MainView.fxml"));
+			
+			ScrollPane scrollPane  = loader.load();
+			Scene mainScene = new Scene(scrollPane);
+			
+			scrollPane.setFitToHeight(true);
+			scrollPane.setFitToWidth(true);
+			
 			primaryStage.setScene(mainScene);
 			primaryStage.setTitle("Sample JavaFX application");
 			primaryStage.show();
